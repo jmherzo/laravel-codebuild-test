@@ -35,4 +35,4 @@ phases:
      # If you don't need it delete it
      # - /usr/bin/mysql  -u root -e "GRANT ALL ON *.* TO 'test'@'localhost' IDENTIFIED BY '' WITH GRANT OPTION"
      # - mysqladmin -u test create test
-     - ./vendor/bin/phpunit
+     # - ./vendor/bin/phpunit
