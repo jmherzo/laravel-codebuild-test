@@ -2,6 +2,7 @@ version: 0.2
 phases:
  install:
    commands:
+     - RUN DEBIAN_FRONTEND=noninteractive
      # phpenmod xdebug
      - curl -s https://getcomposer.org/installer | php
      - mv  composer.phar /usr/local/bin/composer
@@ -10,6 +11,7 @@ phases:
      - apt-get update -y
      - apt-get install -y mysql-server
      - su mysql -s /bin/bash -c "/usr/sbin/mysqld" &
+     - service mysql start
  build:
    commands:
      - echo Build started on `date`
