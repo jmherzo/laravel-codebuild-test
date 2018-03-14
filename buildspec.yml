@@ -2,11 +2,12 @@ version: 0.2
 phases:
  install:
    commands:
-     - export DEBIAN_FRONTEND=noninteractive
      # phpenmod xdebug
      - curl -s https://getcomposer.org/installer | php
      - mv  composer.phar /usr/local/bin/composer
+     - php --version
      # Start Mysql if you need it
+     - apt-get update -y
      - apt-get install -y mysql-server
      - su mysql -s /bin/bash -c "/usr/sbin/mysqld" &
  build:
