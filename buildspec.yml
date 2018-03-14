@@ -11,6 +11,7 @@ phases:
      - apt-get update -y
      - apt-get install -y mysql-server
      - su mysql -s /bin/bash -c "/usr/sbin/mysqld" &
+     - apt-get install php7-mysql
      - service mysql start
  build:
    commands:
