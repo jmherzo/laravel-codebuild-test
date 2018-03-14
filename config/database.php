@@ -54,17 +54,18 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => env('DB_HOST', 'testingsqs.cgdusg8c4gk9.us-east-1.rds.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'masterSQS'),
+            'username' => env('DB_USERNAME', 'master'),
+            'password' => env('DB_PASSWORD', 'CSTMaster9!'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
             'strict' => true,
             'engine' => null,
         ],
+
 
         'pgsql' => [
             'driver' => 'pgsql',
