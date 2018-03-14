@@ -25,7 +25,14 @@ class Todo extends Model
      *
      * @var array
      */
-    protected $fillable = ['titles', 'description'];
+    protected $fillable = ['titles', 'description', 'priority'];
+
+    /**
+    * Scope a query to prioritize todos.
+    *
+    * @param \Illuminate\Database\Eloquent\Builder $query
+    * @return \Illuminate\Database\Eloquent\Builder
+    */
 
     public static function scopePrioritize( $query){
         return $query->orderBy('priority','desc');
