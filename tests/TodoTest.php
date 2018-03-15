@@ -4,9 +4,11 @@ namespace Tests\Unit;
 
 use App\Todo;
 use TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class TodoTest extends TestCase
 {
+    use DatabaseMigrations;
     /**
      * A basic test example.
      *
