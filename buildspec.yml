@@ -29,8 +29,9 @@ phases:
      - echo Build started on `date`
      - echo Installing composer deps
      - composer install
-     #- php artisan migrate:install — env=local
-     #- php artisan migrate — env=local
+     - touch database/database.sqlite
+     - php artisan migrate:install — env=local
+     - php artisan migrate — env=local
 
  post_build:
    commands:
