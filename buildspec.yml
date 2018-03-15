@@ -30,8 +30,8 @@ phases:
      - echo Installing composer deps
      - composer install
      - touch database/database.sqlite
-     - php artisan migrate:install --env=local
-     - php artisan migrate --env=local
+     - php artisan migrate:install --env=testing
+     - php artisan migrate  --env=testing
 
  post_build:
    commands:
