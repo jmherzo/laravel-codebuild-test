@@ -9,9 +9,7 @@ phases:
          apt-get update
 
          # Install SQLITE3
-         apt-get install -y sqlite3 \
-                  php7.0-curl \
-                  php7.0-sqlite3
+         apt-get install -y sqlite3
 
          #Install composer
          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -35,7 +33,7 @@ phases:
  post_build:
    commands:
      - echo Build completed on `date`
-     # Do you need to do this? In many cases phpunit will use sqllite or similar to avoid the need for a real DB.
+     # Do you need to do this? In many cases phpunit will use sqlite or similar to avoid the need for a real DB.
      # If you don't need it delete it
      # - /usr/bin/mysql  -u root -e "GRANT ALL ON *.* TO 'test'@'localhost' IDENTIFIED BY '' WITH GRANT OPTION"
      # - mysqladmin -u test create test
