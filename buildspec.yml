@@ -5,17 +5,13 @@ phases:
      - |
          export DEBIAN_FRONTEND=noninteractive
 
-         #Install php7.1
-         apt-get update
-         apt-get install -y  software-properties-common
-         LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+         #Update
          apt-get update
 
-         # Install PHP
-         apt-get install -y php7.1\
-                  php7.1-sqlite \
-                  php7.1-curl \
-                  sqlite3
+         # Install SQLITE3
+         apt-get install -y sqlite3 \
+                  php7.0-curl \
+                  php7.0-sqlite3
 
          #Install composer
          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -33,6 +29,8 @@ phases:
      - echo Build started on `date`
      - echo Installing composer deps
      - composer install
+     #- php artisan migrate:install — env=local
+     #- php artisan migrate — env=local
 
  post_build:
    commands:
