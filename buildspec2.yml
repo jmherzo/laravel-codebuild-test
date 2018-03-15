@@ -1,0 +1,30 @@
+version: 0.2
+phases:
+ install:
+   commands:
+     - export DEBIAN_FRONTEND=noninteractive
+     # phpenmod xdebug
+     - curl -s https://getcomposer.org/installer | php
+     - mv  composer.phar /usr/local/bin/composer
+     - php --version
+     # Start Mysql if you need it
+     - apt-get update -y
+     - apt-get install -y mysql-server
+     - su mysql -s /bin/bash -c "/usr/sbin/mysqld" &
+     - apt-get update -y
+     - apt-get install php7-mysql
+     - service mysql start
+ build:
+   commands:
+     - echo Build started on `date`
+     - echo Installing composer deps
+     - composer install
+
+ post_build:
+   commands:
+     - echo Build completed on `date`
+     # Do you need to do this? In many cases phpunit will use sqllite or similar to avoid the need for a real DB.
+     # If you don't need it delete it
+     # - /usr/bin/mysql  -u root -e "GRANT ALL ON *.* TO 'test'@'localhost' IDENTIFIED BY '' WITH GRANT OPTION"
+     # - mysqladmin -u test create test
+     - ./vendor/bin/phpunit

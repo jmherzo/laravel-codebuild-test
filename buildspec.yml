@@ -2,16 +2,35 @@ version: 0.2
 phases:
  install:
    commands:
-     - export DEBIAN_FRONTEND=noninteractive
-     # phpenmod xdebug
-     - curl -s https://getcomposer.org/installer | php
-     - mv  composer.phar /usr/local/bin/composer
-     - php --version
+     - |
+         export DEBIAN_FRONTEND=noninteractive
+
+         #Install php7.1
+         apt-get update
+         apt-get install -y  software-properties-common
+         LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+         apt-get update
+
+         # Install PHP
+         apt-get install -y php7.1\
+                  php7.1-sqlite \
+                  php7.1-curl \
+                  sqlite3
+
+         #Install composer
+         php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+         php composer-setup.php ;
+         php -r "unlink('composer-setup.php');" ;
+         mv composer.phar /usr/local/bin/composer
+
+         #Various handy node based dev tools - do you need these during your build? Comment if not.
+         #npm install -g gulp
+         #npm install -g grunt
+         #npm install -g webpack
+
      # Start Mysql if you need it
-     - apt-get update -y
-     - apt-get install -y mysql-server
-     - su mysql -s /bin/bash -c "/usr/sbin/mysqld" &
-     - service mysql start
+     # - apt-get install -y mysql-server
+     # - su mysql -s /bin/bash -c "/usr/sbin/mysqld" &
  build:
    commands:
      - echo Build started on `date`
